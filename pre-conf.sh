@@ -46,9 +46,13 @@ echo "
 max_heap_table_size = 1073741824
 max_allowed_packet = 16777216
 tmp_table_size = 134217728
-join_buffer_size = 134217728
+join_buffer_size = 256M
+innodb_file_format=Barracuda
+innodb_large_prefix=1
+innodb_io_capacity=5000
+innodb_buffer_pool_instances=33
 innodb_buffer_pool_size = 4294967296
-innodb_doublewrite = OFF
+innodb_doublewrite = ON
 innodb_flush_log_at_timeout = 10
 innodb_read_io_threads = 32
 innodb_write_io_threads = 16
