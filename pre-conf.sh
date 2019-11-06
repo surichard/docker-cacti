@@ -45,8 +45,8 @@ echo "
 
 max_heap_table_size = 1073741824
 max_allowed_packet = 16777216
-tmp_table_size = 134217728
-join_buffer_size = 256M
+tmp_table_size = 256M
+join_buffer_size = 320M
 innodb_file_format=Barracuda
 innodb_large_prefix=1
 innodb_io_capacity=5000
