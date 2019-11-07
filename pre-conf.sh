@@ -24,7 +24,7 @@ mysql_install_db
  
  mysql -u root -pmysqlpsswd cacti < /opt/cacti/cacti.sql
  mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -pmysqlpsswd mysql
- 
+ echo "ALTER DATABASE cacti CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | mysql -u root -pmysqlpsswd cacti
  
  #to fix error relate to ip address of container apache2
  echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf
