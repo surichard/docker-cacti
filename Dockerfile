@@ -1,5 +1,5 @@
 #name of container: docker-cacti
-#versison of container: 0.6.3
+#versison of container: 0.6.4
 FROM quantumobject/docker-baseimage:18.04
 MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
@@ -16,7 +16,7 @@ RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive
                                                             php-gd php-snmp php-gmp php-curl php-net-socket\
                                                             libmysqlclient-dev libsnmp-dev dos2unix help2man git \
                                                             snmpd python-netsnmp libnet-snmp-perl snmp-mibs-downloader \
-                                                            iputils-ping autoconf \
+                                                            iputils-ping autoconf unzip\
                     && cd /opt/ \
                     && wget https://www.cacti.net/downloads/cacti-latest.tar.gz \
                     && ver=$(tar -tf cacti-latest.tar.gz | head -n1 | tr -d /) \
