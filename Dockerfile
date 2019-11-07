@@ -16,7 +16,7 @@ RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive
                                                             php-gd php-snmp php-gmp php-curl php-net-socket\
                                                             libmysqlclient-dev libsnmp-dev dos2unix help2man git \
                                                             snmpd python-netsnmp libnet-snmp-perl snmp-mibs-downloader \
-                                                            iputils-ping autoconf unzip\
+                                                            iputils-ping autoconf unzip \
                     && cd /opt/ \
                     && wget https://www.cacti.net/downloads/cacti-latest.tar.gz \
                     && ver=$(tar -tf cacti-latest.tar.gz | head -n1 | tr -d /) \
