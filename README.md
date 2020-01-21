@@ -38,8 +38,11 @@ Default value is America/New_York .
 # Added Volume for peristent data :
 
   /opt/cacti/plugins/
+  
   /var/log/
+  
   /opt/cacti/templates/
+  
   /var/lib/mysql
 
 ## Accessing the Cacti applications:
