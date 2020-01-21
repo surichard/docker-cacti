@@ -86,7 +86,7 @@ RUN chmod +x /sbin/pre-conf ; sync \
 COPY backup.sh /sbin/backup
 COPY restore.sh /sbin/restore
 RUN chmod +x /sbin/backup /sbin/restore
-VOLUME /var/backups
+VOLUME /var/backups /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql
 
 
 # to allow access from outside of the container  to the container service
