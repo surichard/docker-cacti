@@ -1,6 +1,6 @@
 # docker-cacti
 
-Docker container for [cacti 1.2.5][3]
+Docker container for [cacti 1.2.8][3]
 
 "Cacti is a complete network graphing solution designed to harness the power of [RRDTool's][6] data storage and graphing functionality. Cacti provides a fast poller, advanced graph templating, multiple data acquisition methods, and user management features out of the box. All of this is wrapped in an intuitive, easy to use interface that makes sense for LAN-sized installations up to complex networks with hundreds of devices."
 
@@ -33,7 +33,17 @@ or in yml:
   
      - TZ=Europe/London
    
-Default value is America/New_York .   
+Default value is America/New_York . 
+
+# Added Volume for peristent data :
+
+  /opt/cacti/plugins/
+  
+  /var/log/
+  
+  /opt/cacti/templates/
+  
+  /var/lib/mysql
 
 ## Accessing the Cacti applications:
 
