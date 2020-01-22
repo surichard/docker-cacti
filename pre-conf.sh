@@ -15,18 +15,17 @@ echo "
 
 max_heap_table_size = 1073741824
 max_allowed_packet = 16777216
-tmp_table_size = 256M
-join_buffer_size = 320M
+tmp_table_size = 500M
+join_buffer_size = 1000M
 innodb_file_format=Barracuda
 innodb_large_prefix=1
 innodb_io_capacity=5000
 innodb_buffer_pool_instances=33
-innodb_buffer_pool_size = 4294967296
+innodb_buffer_pool_size = 7811M
 innodb_doublewrite = ON
 innodb_flush_log_at_timeout = 10
 innodb_read_io_threads = 32
 innodb_write_io_threads = 16
-innodb_additional_mem_pool_size = 80M
 collation-server = utf8mb4_unicode_ci
 character-set-server = utf8mb4
 " > /etc/mysql/my.cnf
@@ -47,8 +46,6 @@ mysql_install_db
  
  mysql -u root -pmysqlpsswd cacti < /opt/cacti/cacti.sql
  mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -pmysqlpsswd mysql
- 
- #echo "ALTER DATABASE cacti CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | mysql -u root -pmysqlpsswd cacti
  
  #to fix error relate to ip address of container apache2
  echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf
