@@ -20,7 +20,7 @@ join_buffer_size = 1000M
 innodb_file_format=Barracuda
 innodb_large_prefix=1
 innodb_io_capacity=5000
-innodb_buffer_pool_instances=33
+innodb_buffer_pool_instances=62
 innodb_buffer_pool_size = 7811M
 innodb_doublewrite = ON
 innodb_flush_log_at_timeout = 10
@@ -57,7 +57,7 @@ mysql_install_db
  #configure poller Crontab
  echo "*/5 * * * * www-data php /opt/cacti/poller.php > /dev/null 2>&1" >> /etc/crontab 
 
-killall mysqld
+mysqladmin shutdown
 sleep 2s
 
 
