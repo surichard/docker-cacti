@@ -10,7 +10,7 @@ ENV TZ America/New_York
 RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -yq mariadb-server mariadb-client php build-essential\
                                                             apache2 snmp libapache2-mod-php libssl-dev \
                                                             rrdtool librrds-perl php-mysql php-pear \
-                                                            php-common php-json php-gettext \
+                                                            php-common php-json php-gettext libtool \
                                                             php-pspell php-recode php-tidy php-xmlrpc \
                                                             php-xml php-ldap php-mbstring php-intl \
                                                             php-gd php-snmp php-gmp php-curl php-net-socket\
