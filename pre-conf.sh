@@ -9,36 +9,6 @@ mv plugin_thold thold
 touch /opt/cacti/log/cacti.log
 chown -R www-data:www-data /opt/cacti/
 
-#Initial conf for mysql
-mysql_install_db
-#for configuriing database
-/usr/bin/mysqld_safe &
-
- sleep 3s 
-  
- mysqladmin -u root password mysqlpsswd
- mysqladmin -u root -pmysqlpsswd reload
- mysqladmin -u root -pmysqlpsswd create cacti
- echo "GRANT ALL ON cacti.* TO cacti@localhost IDENTIFIED BY '9PIu8AbWQSf8'; flush privileges; " | mysql -u root -pmysqlpsswd 
- echo "GRANT SELECT ON mysql.time_zone_name TO cacti@localhost IDENTIFIED BY '9PIu8AbWQSf8'; flush privileges; " | mysql -u root -pmysqlpsswd 
- 
- mysql -u root -pmysqlpsswd cacti < /opt/cacti/cacti.sql
- mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -pmysqlpsswd mysql
- echo "ALTER DATABASE cacti CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | mysql -u root -pmysqlpsswd cacti
- 
- #to fix error relate to ip address of container apache2
- echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf
- ln -s /etc/apache2/conf-available/fqdn.conf /etc/apache2/conf-enabled/fqdn.conf
- 
- # to create a link for the cacti web directory
- ln -s /opt/cacti/ /var/www/html/cacti
- 
- #configure poller Crontab
- echo "*/5 * * * * www-data php /opt/cacti/poller.php > /dev/null 2>&1" >> /etc/crontab 
-
-killall mysqld
-sleep 2s
-
 mv /etc/mysql/my.cnf /etc/mysql/my.cnf-bkup
 echo "
 [mysqld]
@@ -60,6 +30,39 @@ innodb_additional_mem_pool_size = 80M
 collation-server = utf8mb4_unicode_ci
 character-set-server = utf8mb4
 " > /etc/mysql/my.cnf
+
+
+#Initial conf for mysql
+mysql_install_db
+#for configuriing database
+/usr/bin/mysqld_safe &
+
+ sleep 3s 
+  
+ mysqladmin -u root password mysqlpsswd
+ mysqladmin -u root -pmysqlpsswd reload
+ mysqladmin -u root -pmysqlpsswd create cacti
+ echo "GRANT ALL ON cacti.* TO cacti@localhost IDENTIFIED BY '9PIu8AbWQSf8'; flush privileges; " | mysql -u root -pmysqlpsswd 
+ echo "GRANT SELECT ON mysql.time_zone_name TO cacti@localhost IDENTIFIED BY '9PIu8AbWQSf8'; flush privileges; " | mysql -u root -pmysqlpsswd 
+ 
+ mysql -u root -pmysqlpsswd cacti < /opt/cacti/cacti.sql
+ mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -pmysqlpsswd mysql
+ 
+ #echo "ALTER DATABASE cacti CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | mysql -u root -pmysqlpsswd cacti
+ 
+ #to fix error relate to ip address of container apache2
+ echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf
+ ln -s /etc/apache2/conf-available/fqdn.conf /etc/apache2/conf-enabled/fqdn.conf
+ 
+ # to create a link for the cacti web directory
+ ln -s /opt/cacti/ /var/www/html/cacti
+ 
+ #configure poller Crontab
+ echo "*/5 * * * * www-data php /opt/cacti/poller.php > /dev/null 2>&1" >> /etc/crontab 
+
+killall mysqld
+sleep 2s
+
 
 cd /opt/
 wget http://www.cacti.net/downloads/spine/cacti-spine-latest.tar.gz
