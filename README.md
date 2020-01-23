@@ -44,6 +44,8 @@ Default value is America/New_York .
   /opt/cacti/templates/
   
   /var/lib/mysql
+  
+  /opt/cacti/rrd 
 
 ## Accessing the Cacti applications:
 
