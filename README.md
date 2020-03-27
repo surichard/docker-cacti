@@ -89,18 +89,6 @@ download and unpack plugins
 
 and them access to cacti console/plugin management and install it and enable it. This is only for an example, to install and configured flowview you need to check its documentation.  [https://github.com/Cacti/plugin_flowview/blob/develop/README.md][8]
 
-## To backup, restore cacti database :
-
-To backup use the command below:
-
-     $ docker exec -it container_id /sbin/backup
-
-Them backup data was created /var/backups/alldb_backup.sql.
-
-To restore use the command below:
-
-     $ docker exec -it container_id /sbin/restore
-
 ## More Info
 
 About Cacti [www.cacti.net][1]
