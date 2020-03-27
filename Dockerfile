@@ -81,12 +81,8 @@ RUN chmod +x /sbin/pre-conf ; sync \
     && /bin/bash -c /sbin/pre-conf \
     && rm /sbin/pre-conf
 
-##scritp that can be running from the outside using docker-bash tool ...
-## for example to create backup for database with convitation of VOLUME   dockers-bash container_ID backup_mysql
-COPY backup.sh /sbin/backup
-COPY restore.sh /sbin/restore
-RUN chmod +x /sbin/backup /sbin/restore
-VOLUME /var/backups /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql /opt/cacti/rrd
+# Volume for container   
+VOLUME /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql /opt/cacti/rrd
 
 
 # to allow access from outside of the container  to the container service
