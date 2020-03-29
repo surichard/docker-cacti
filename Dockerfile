@@ -7,7 +7,7 @@ ENV TZ America/New_York
 
 # Update the container
 #Installation of nesesary package/software for this containers...
-RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -yq mariadb-server mariadb-client php build-essential\
+RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends mariadb-server mariadb-client php build-essential\
                                                             apache2 snmp libapache2-mod-php libssl-dev \
                                                             rrdtool librrds-perl php-mysql php-pear \
                                                             php-common php-json php-gettext libtool \
