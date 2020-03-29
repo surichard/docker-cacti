@@ -37,11 +37,11 @@ Default value is America/New_York .
 
 # Added Volume for peristent data :
 
-  /opt/cacti/plugins/
+  /opt/cacti/plugins
   
-  /var/log/
+  /var/log
   
-  /opt/cacti/templates/
+  /opt/cacti/templates
   
   /var/lib/mysql
   
@@ -78,7 +78,7 @@ To access the container from the server that the container is running
 
 change directory to plugins directory of the cacti  
 
-     $ cd /opt/cacti/plugins/
+     $ cd /opt/cacti/plugins
 
 download and unpack plugins
 
