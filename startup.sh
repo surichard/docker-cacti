@@ -15,6 +15,12 @@ else
     cp -Rp /var/backup/plugins/* /opt/cacti/plugins/
 fi
 
+if [ -d /var/log/snmpd ]; then
+   echo "log folder with data"
+else
+    cp -Rp /var/backup/log/* /var/log/
+fi
+
 #check if already configured or not
 if [ -f /etc/configured ]; then
         echo 'already configured'
