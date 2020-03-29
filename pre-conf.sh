@@ -75,5 +75,5 @@ chmod +s /usr/local/spine/bin/spine
 
 #make backup copy for Volume 
 mkdir -p /var/backup
-cp -R /var/lib/mysql /var/backup
-cp -R /opt/cacti/plugins /var/backup
+cp -Rp /var/lib/mysql /var/backup
+cp -Rp /opt/cacti/plugins /var/backup
