@@ -72,3 +72,8 @@ make
 make install
 chown root:root /usr/local/spine/bin/spine
 chmod +s /usr/local/spine/bin/spine
+
+#make backup copy for Volume 
+mkdir -p /var/backup
+cp -R /var/lib/mysql /var/backup
+cp -R /opt/cacti/plugins /var/backup
