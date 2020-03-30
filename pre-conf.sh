@@ -55,7 +55,7 @@ mysql_install_db
  ln -s /opt/cacti/ /var/www/html/cacti
  
  #configure poller Crontab
- echo "* * * * * www-data php /opt/cacti/poller.php > /dev/null 2>&1" >> /etc/crontab 
+ echo "*/5 * * * * www-data php /opt/cacti/poller.php > /dev/null 2>&1" >> /etc/crontab 
 
 mysqladmin shutdown
 sleep 2s
