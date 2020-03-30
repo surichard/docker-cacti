@@ -7,8 +7,8 @@ ENV TZ America/New_York
 
 # Update the container
 #Installation of nesesary package/software for this containers...
-RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends mariadb-server mariadb-client php build-essential\
-                                                            apache2 snmp libapache2-mod-php libssl-dev vim \
+RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends mariadb-server mariadb-client php build-essential automake \
+                                                            apache2 snmp libapache2-mod-php libssl-dev \
                                                             rrdtool librrds-perl php-mysql php-pear \
                                                             php-common php-json php-gettext libtool \
                                                             php-pspell php-recode php-tidy php-xmlrpc \
@@ -25,7 +25,6 @@ RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive
                     && apt-get clean \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
->>>>>>> upstream/master
 
 # Ensure cron is allowed to run
 RUN sed -i 's/^\(session\s\+required\s\+pam_loginuid\.so.*$\)/# \1/g' /etc/pam.d/cron
