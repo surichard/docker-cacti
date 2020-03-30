@@ -1,6 +1,6 @@
 # docker-cacti
 
-Docker container for [cacti 1.2.8][3]
+Docker container for [cacti 1.2.10][3]
 
 "Cacti is a complete network graphing solution designed to harness the power of [RRDTool's][6] data storage and graphing functionality. Cacti provides a fast poller, advanced graph templating, multiple data acquisition methods, and user management features out of the box. All of this is wrapped in an intuitive, easy to use interface that makes sense for LAN-sized installations up to complex networks with hundreds of devices."
 
@@ -37,11 +37,11 @@ Default value is America/New_York .
 
 # Added Volume for peristent data :
 
-  /opt/cacti/plugins/
+  /opt/cacti/plugins
   
-  /var/log/
+  /var/log
   
-  /opt/cacti/templates/
+  /opt/cacti/templates
   
   /var/lib/mysql
   
@@ -78,7 +78,7 @@ To access the container from the server that the container is running
 
 change directory to plugins directory of the cacti  
 
-     $ cd /opt/cacti/plugins/
+     $ cd /opt/cacti/plugins
 
 download and unpack plugins
 
@@ -88,18 +88,6 @@ download and unpack plugins
      $ chmod 777 /var/netflow/flows/completed
 
 and them access to cacti console/plugin management and install it and enable it. This is only for an example, to install and configured flowview you need to check its documentation.  [https://github.com/Cacti/plugin_flowview/blob/develop/README.md][8]
-
-## To backup, restore cacti database :
-
-To backup use the command below:
-
-     $ docker exec -it container_id /sbin/backup
-
-Them backup data was created /var/backups/alldb_backup.sql.
-
-To restore use the command below:
-
-     $ docker exec -it container_id /sbin/restore
 
 ## More Info
 

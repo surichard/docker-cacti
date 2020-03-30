@@ -7,26 +7,25 @@ ENV TZ America/New_York
 
 # Update the container
 #Installation of nesesary package/software for this containers...
-RUN apt-get update && echo $TZ > /etc/timezone 
-     && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-     mariadb-server mariadb-client php build-essential\
-     apache2 snmp libapache2-mod-php libssl-dev vim \
-     rrdtool librrds-perl php-mysql php-pear \
-     php-common php-json php-gettext libtool \
-     php-pspell php-recode php-tidy php-xmlrpc \
-     php-xml php-ldap php-mbstring php-intl \
-     php-gd php-snmp php-gmp php-curl php-net-socket\
-     libmysqlclient-dev libsnmp-dev dos2unix help2man git \
-     snmpd python-netsnmp libnet-snmp-perl snmp-mibs-downloader \
-     iputils-ping autoconf unzip \
-     && cd /opt/ \
-     && wget https://www.cacti.net/downloads/cacti-latest.tar.gz \
-     && ver=$(tar -tf cacti-latest.tar.gz | head -n1 | tr -d /) \
-     && tar -xvf cacti-latest.tar.gz && mv $ver cacti \
-     && rm cacti-latest.tar.gz \
-     && apt-get clean \
-     && rm -rf /tmp/* /var/tmp/*  \
-     && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && echo $TZ > /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends mariadb-server mariadb-client php build-essential\
+                                                            apache2 snmp libapache2-mod-php libssl-dev vim \
+                                                            rrdtool librrds-perl php-mysql php-pear \
+                                                            php-common php-json php-gettext libtool \
+                                                            php-pspell php-recode php-tidy php-xmlrpc \
+                                                            php-xml php-ldap php-mbstring php-intl \
+                                                            php-gd php-snmp php-gmp php-curl php-net-socket\
+                                                            libmysqlclient-dev libsnmp-dev dos2unix help2man git \
+                                                            snmpd python-netsnmp libnet-snmp-perl snmp-mibs-downloader \
+                                                            iputils-ping autoconf unzip \
+                    && cd /opt/ \
+                    && wget https://www.cacti.net/downloads/cacti-latest.tar.gz \
+                    && ver=$(tar -tf cacti-latest.tar.gz | head -n1 | tr -d /) \
+                    && tar -xvf cacti-latest.tar.gz && mv $ver cacti \
+                    && rm cacti-latest.tar.gz \
+                    && apt-get clean \
+                    && rm -rf /tmp/* /var/tmp/*  \
+                    && rm -rf /var/lib/apt/lists/*
+>>>>>>> upstream/master
 
 # Ensure cron is allowed to run
 RUN sed -i 's/^\(session\s\+required\s\+pam_loginuid\.so.*$\)/# \1/g' /etc/pam.d/cron
@@ -83,12 +82,8 @@ RUN chmod +x /sbin/pre-conf ; sync \
     && /bin/bash -c /sbin/pre-conf \
     && rm /sbin/pre-conf
 
-##scritp that can be running from the outside using docker-bash tool ...
-## for example to create backup for database with convitation of VOLUME   dockers-bash container_ID backup_mysql
-COPY backup.sh /sbin/backup
-COPY restore.sh /sbin/restore
-RUN chmod +x /sbin/backup /sbin/restore
-VOLUME /var/backups /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql /opt/cacti/rrd
+# Volume for container   
+VOLUME /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql /opt/cacti/rrd
 
 
 # to allow access from outside of the container  to the container service

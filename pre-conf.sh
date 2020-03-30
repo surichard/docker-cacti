@@ -72,3 +72,11 @@ make
 make install
 chown root:root /usr/local/spine/bin/spine
 chmod +s /usr/local/spine/bin/spine
+rm cacti-spine-latest.tar.gz
+rm -R /opt/$ver
+
+#make backup copy for Volume 
+mkdir -p /var/backup
+cp -Rp /var/lib/mysql /var/backup
+cp -Rp /opt/cacti/plugins /var/backup
+cp -Rp /var/log  /var/backup
