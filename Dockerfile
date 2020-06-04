@@ -82,7 +82,7 @@ RUN chmod +x /sbin/pre-conf ; sync \
     && rm /sbin/pre-conf
 
 # Volume for container   
-VOLUME /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql /opt/cacti/rrd
+VOLUME /opt/cacti/plugins /var/log /opt/cacti/templates /var/lib/mysql /opt/cacti/rra
 
 
 # to allow access from outside of the container  to the container service
