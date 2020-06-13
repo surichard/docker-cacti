@@ -2,6 +2,7 @@
 
 set -e
 
+#  check to move code to run only once ...
 #in case Volume are empty
 if [ "$(ls -A /var/lib/mysql)" ]; then
     echo "mysql folder with data"    
