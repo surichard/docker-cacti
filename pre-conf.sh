@@ -22,6 +22,7 @@ innodb_large_prefix=1
 innodb_io_capacity=5000
 innodb_buffer_pool_instances=62
 innodb_buffer_pool_size = 7811M
+innodb_additional_mem_pool_size = 80M
 innodb_doublewrite = ON
 innodb_flush_log_at_timeout = 10
 innodb_read_io_threads = 32
