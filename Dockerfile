@@ -1,5 +1,5 @@
 #name of container: docker-cacti
-#versison of container: 0.1.3
+#versison of container: 0.6.4
 FROM quantumobject/docker-baseimage:18.04
 MAINTAINER Richard Su  "lei.su@ixecloud.com"
 
